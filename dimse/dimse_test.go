@@ -6,7 +6,7 @@ import (
 
 	"github.com/grailbio/go-dicom/dicomio"
 
-	"github.com/grailbio/go-netdicom/dimse"
+	"github.com/lsochanowski/go-netdicom/dimse"
 )
 
 func testDIMSE(t *testing.T, v dimse.Message) {
