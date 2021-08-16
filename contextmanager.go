@@ -3,10 +3,10 @@ package netdicom
 import (
 	"fmt"
 
-	"github.com/grailbio/go-dicom"
-	"github.com/grailbio/go-dicom/dicomlog"
-	"github.com/grailbio/go-dicom/dicomuid"
-	"github.com/grailbio/go-netdicom/pdu"
+	"github.com/lsochanowski/go-dicom"
+	"github.com/lsochanowski/go-dicom/dicomlog"
+	"github.com/lsochanowski/go-dicom/dicomuid"
+	"github.com/lsochanowski/go-netdicom/pdu"
 )
 
 type contextManagerEntry struct {
