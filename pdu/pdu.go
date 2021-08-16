@@ -421,6 +421,9 @@ func ReadPresentationDataValueItem(d *dicomio.Decoder) PresentationDataValueItem
 	item.Command = (header&1 != 0)
 	item.Last = (header&2 != 0)
 	item.Value = d.ReadBytes(int(length - 2)) // remove contextID and header
+	if header&0xfc != 0 {
+		d.SetError(fmt.Errorf("PresentationDataValueItem: illegal header byte %x", header))
+	}
 	return item
 }
 
@@ -691,9 +694,9 @@ type AbortReasonType byte
 const (
 	AbortReasonNotSpecified             AbortReasonType = 0
 	AbortReasonUnexpectedPDU            AbortReasonType = 2
-	AbortReasonUnrecognizedPDUParameter AbortReasonType = 3
-	AbortReasonUnexpectedPDUParameter   AbortReasonType = 4
-	AbortReasonInvalidPDUParameterValue AbortReasonType = 5
+	AbortReasonUnrecognizedPDUParameter AbortReasonType = 4
+	AbortReasonUnexpectedPDUParameter   AbortReasonType = 5
+	AbortReasonInvalidPDUParameterValue AbortReasonType = 6
 )
 
 type AAbort struct {
